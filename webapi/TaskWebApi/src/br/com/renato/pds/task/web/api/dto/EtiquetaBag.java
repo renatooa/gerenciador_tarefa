@@ -1,8 +1,8 @@
 package br.com.renato.pds.task.web.api.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +18,7 @@ public class EtiquetaBag implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@XmlElementWrapper
-	private ArrayList<Etiqueta> etiquetas = null;
+	private List<Etiqueta> etiquetas = null;
 
 	@XmlElementWrapper
 	private HashMap<String, String> metadados = null;
@@ -26,7 +26,7 @@ public class EtiquetaBag implements Serializable {
 	public EtiquetaBag() {
 	}
 
-	public EtiquetaBag(ArrayList<Etiqueta> etiquetas, int limit, int offSet) {
+	public EtiquetaBag(List<Etiqueta> etiquetas, int limit, int offSet) {
 		super();
 		this.etiquetas = etiquetas;
 		metadados = new HashMap<String, String>();
@@ -36,11 +36,11 @@ public class EtiquetaBag implements Serializable {
 		metadados.put("offset", Integer.toString(offSet));
 	}
 
-	public ArrayList<Etiqueta> getEtiquetas() {
+	public List<Etiqueta> getEtiquetas() {
 		return etiquetas;
 	}
 
-	public void setEtiquetas(ArrayList<Etiqueta> etiquetas) {
+	public void setEtiquetas(List<Etiqueta> etiquetas) {
 		this.etiquetas = etiquetas;
 	}
 

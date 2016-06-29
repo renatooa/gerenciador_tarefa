@@ -1,6 +1,7 @@
 package br.com.renato.pds.task.web.api.controller;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.com.renato.pds.task.web.api.dominio.Etiqueta;
 import br.com.renato.pds.task.web.api.dominio.Tarefa;
 import br.com.renato.pds.task.web.api.dto.Mensagem;
 import br.com.renato.pds.task.web.api.dto.TarefaBag;
@@ -27,16 +29,30 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 	public Object incluir(@RequestBody Tarefa t) {
 
 		if (t == null) {
-			return Mensagem.builderError(400, "Necessario informar a tarefa");
+			return Mensagem.builderError(400, "Necessário informar a tarefa");
 		} else if (t.getNome() == null || t.getNome().isEmpty()) {
-			return Mensagem.builderError(400, "Necessario informar o nome da tarefa");
+			return Mensagem.builderError(400, "Necessário informar o nome da tarefa");
 		}
 
 		t.setIdRandom();
 
 		Tarefa.getTarefas().add(t);
 
+		verificarInclusaoEtiquetas(t.getEtiquetas());
+
 		return t;
+	}
+
+	private void verificarInclusaoEtiquetas(List<Etiqueta> etiquetas) {
+
+		if (etiquetas != null && !etiquetas.isEmpty()) {
+
+			etiquetas.forEach(etq -> {
+				if (!Etiqueta.isEtiquetasContem(etq.getId())) {
+					etq.incluir();
+				}
+			});
+		}
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
@@ -45,9 +61,9 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 	public Object editar(@RequestBody Tarefa t) {
 
 		if (t == null) {
-			return Mensagem.builderError(400, "Necessario informar a tarefa");
+			return Mensagem.builderError(400, "Necessário informar a tarefa");
 		} else if (t.getNome() == null || t.getNome().isEmpty()) {
-			return Mensagem.builderError(400, "Necessario informar o nome da tarefa");
+			return Mensagem.builderError(400, "Necessário informar o nome da tarefa");
 		}
 
 		Object object = get(t.getId());
@@ -55,10 +71,12 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 		if (object instanceof Tarefa) {
 
 			Tarefa.getTarefas().remove(object);
-			Tarefa.getTarefas().add((Tarefa) object);
+			Tarefa.getTarefas().add((Tarefa) t);
+
+			verificarInclusaoEtiquetas(((Tarefa) t).getEtiquetas());
 		}
 
-		return object;
+		return t;
 	}
 
 	@RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
@@ -67,7 +85,7 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 	public Object excluir(@PathVariable(value = "id") int id) {
 
 		if (id == 0) {
-			return Mensagem.builderError(400, "Necessario informar o id para exclusão");
+			return Mensagem.builderError(400, "Necessário informar o id para exclusão");
 		}
 
 		try {
@@ -88,7 +106,7 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 
 		try {
 			if (id == 0) {
-				return Mensagem.builderError(400, "Necessario informar o id para pesquisa");
+				return Mensagem.builderError(400, "Necessário informar o id para pesquisa");
 			}
 
 			Tarefa tarefa = Tarefa.getTarefas().stream().filter(task -> task.getId() == id).findFirst().get();

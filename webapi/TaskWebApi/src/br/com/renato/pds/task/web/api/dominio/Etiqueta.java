@@ -3,6 +3,8 @@ package br.com.renato.pds.task.web.api.dominio;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Random;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -22,6 +24,16 @@ public class Etiqueta implements Serializable {
 		super();
 		this.id = id;
 		this.descricao = descricao;
+	}
+
+	public void incluir() {
+		setIdRandom();
+		getEtiquetas().add(this);
+	}
+
+	public void setIdRandom() {
+		Random random = new Random();
+		setId(random.nextInt());
 	}
 
 	public int getId() {
@@ -49,5 +61,13 @@ public class Etiqueta implements Serializable {
 			etiquetas.add(new Etiqueta(3, "EM_ESPERA"));
 		}
 		return etiquetas;
+	}
+
+	public static boolean isEtiquetasContem(int id) {
+		try {
+			return getEtiquetas().stream().filter(etq -> etq.getId() == id).count() > 0;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
 	}
 }
