@@ -18,4 +18,4 @@ COPY D:/task-manager /etc/task-manager
 
 EXPOSE 3000
 
-ENTRYPOINT ["java","-jar","/etc/task-manager/taskWebApi.jar"]
+ENTRYPOINT ["java","-jar","/etc/task-manager/task_webapi/taskWebApi.jar"]
