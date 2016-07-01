@@ -1,0 +1,67 @@
+<div class="row">
+<nav>
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <a href="#!" class="breadcrumb">Sistema</a>
+        <a href="#/cadastro" class="breadcrumb">Cadastro</a>        
+      </div>
+    </div>
+  </nav>
+</div>  
+<p>Preencha os campos abaixo:</p>            
+<div class="row">
+    <div class="input-field col s6">
+            <input id="nome" type="text" class="validate"  ng-model="cadastro.nome" >
+            <label for="nome">Nome</label>
+    </div>
+      <div class="input-field col s6">
+            <input id="descricao" type="text" class="validate"  ng-model="cadastro.descricao" >
+            <label for="descricao">Descricao</label>
+    </div>
+</div>
+<div class="row">             
+
+<div class="input-field col s4">
+    <select>      
+        <option value="Baixa">Baixa</option>
+        <option value="Media">Media</option>
+        <option value="Alta">Alta</option>      
+    </select>
+    <label>Prioridade</label>
+  </div>
+ 
+    <div class="input-field col s4">
+            <input id="dataInicio" type="text" class="validate data" ng-model="cadastro.dataInicioDDMMAAAA">
+            <label for="dataInicio">Data Inicio</label>
+    </div>
+    <div class="input-field col s4">
+            <input id="last_name" type="text" class="validate data" ng-model="cadastro.dataFimDDMMAAAA">
+            <label for="last_name">Data Fim</label>
+    </div>
+</div>
+ <fieldset>
+     <legend>Etiquetas</legend>
+     <div class="row">
+        <div class="input-field col s8">
+            <label for="novaEtiqueta">Etiqueta</label>     
+            <input type="text" id="novaEtiqueta" ng-model="novaEtiqueta" >
+            <button class="btn" ng-click="AdicionarEtiqueta()" >
+                <i class="material-icons left">loyalty</i>Adicionar Etiqueta
+            </button>
+        </div>
+        <div class="col s4"> 
+            <div ng-repeat="etiqueta in cadastro.etiquetas">              
+                <div class="chip" style="margin-bottom:5px;">
+                    {{etiqueta.descricao}}
+                <i class="material-icons" ng-click="RemoveEtiqueta()" >close</i>
+                </div>
+            </div>
+        </div>
+     </div>
+    
+ </fieldset>
+<br>
+ 
+<button class="btn waves-effect waves-light" ng-click="salvar()" name="action">Salvar
+    <i class="material-icons left">save</i>
+  </button>

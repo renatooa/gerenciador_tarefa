@@ -1,0 +1,33 @@
+<h3>Tarefas</h3>
+<a href="#/cadastro" class="waves-effect waves-light btn"><i class="material-icons left">mode_edit</i> Cadastrar Nova Tarefa</a>
+
+<div ng-show="cadastros.length">
+    <p>Selecione abaixo a tarefa desejada:</p>
+    <table>
+        <tr>
+            <th>#ID</th>
+            <th>Nome</th>
+            <th>Prioridade</th>
+            <th>Data Inicio</th>
+            <th>Data Fim</th>
+            <th>Tag</th>
+            <th>Ação</th>
+            </tr>
+        <tr ng-repeat="item in cadastros">
+            <td>{{item.id}}</td>        
+            <td><a href="#/editar/{{item.id}}">{{item.nome}}</a></td>
+            <td>{{item.prioridade}}</td>            
+            <td>{{item.dataInicioDDMMAAAA}}</td>
+            <td>{{item.dataFimDDMMAAAA}}</td>
+            <td></td>
+            <td>
+            <button ng-click="Excluir(item);" class="btn">Excluir</button>    
+            </td>            
+            </tr>
+        </table>
+</div>
+
+<div ng-hide="cadastros.length">
+    <p>Você ainda não possui nenhuma tarefa cadastrada!</p>
+</div>
+

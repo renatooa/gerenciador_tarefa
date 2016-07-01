@@ -1,4 +1,4 @@
-FROM ubuntu/jre/node
+FROM ingeus/spring-boot-web
 
 COPY /task-manager /etc/task-manager/
 

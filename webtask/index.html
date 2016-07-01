@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Exercicio 5 - Heitor & Renato</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+</head>
+<body >
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#!" class="brand-logo">SGT <small>Sistema de Gestão de tarefas</small></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#!">INICIO</a></li>
+      </ul>
+
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/">Inicio</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div>
+    <div class="section no-pad-bot" >
+      <div class="container" ng-app="app">
+        <div ng-view></div>  
+      </div>
+    </div>
+  </div>
+ 
+  <footer class="page-footer orange" style="margin-top:250px">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Exercicio 5</h5>
+          <p class="grey-text text-lighten-4">
+            Exercicio proposto pelo professor Marco Aurelio, para exemplificar o uso de Angular + Materialize + Web Api;
+          </p>
+        </div>
+        
+      </div>
+    </div>
+    <div class="footer-copyright" >
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" >Heitor & Renato</a>
+      </div>
+    </div>
+  </footer>
+
+
+ <!-- Modal Trigger -->
+
+  <!-- Modal Structure -->
+  <div id="msgerro" class="modal">
+    <div class="modal-content">
+      <h4>Ocorreu um erro</h4>
+      <p>Desculpe, mas ocorreu um erro inesperado. Tente novamente!</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Entendi!</a>
+    </div>
+  </div>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+  <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>      
+  <script src="js/init.js"></script>    
+  <script src="js/materialize.min.js"></script>
+  <script src="js/controllers.js"  ></script>
+
+
+  </body>
+</html>
