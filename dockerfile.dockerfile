@@ -1,6 +1,6 @@
 FROM ubuntu
 
-RUN apt-get update && apt-get install openjdk-8-jre
+RUN apt-get update && apt-get install -y openjdk-8-jre
 
 RUN apt-get install -y nodejs
 
