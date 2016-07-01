@@ -6,7 +6,7 @@ RUN apt-get install -y nodejs
 
 RUN apt-get install -y build-essential
 
-RUN apt-get install npm
+RUN apt-get install -y npm
 
 COPY /task-manager /etc/task-manager/
 
