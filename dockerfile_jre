@@ -1,0 +1,7 @@
+FROM unbutu/jre/node
+
+COPY D:/task-manager /etc/task-manager
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","/etc/task-manager/task_webapi/taskWebApi.jar"]

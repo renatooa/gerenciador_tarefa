@@ -1,0 +1,7 @@
+FROM sctrcdr/spring-boot-web:1.1
+
+COPY /task-manager /etc/task-manager/
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","/etc/task-manager/task_webapi/taskWebApi.jar"]

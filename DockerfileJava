@@ -1,0 +1,9 @@
+FROM java:8
+
+COPY /task-manager /etc/task-manager/
+
+RUN javac Main.java
+
+EXPOSE 8080
+
+CMD ["java","-jar","/etc/task-manager/task_webapi/taskWebApi.jar"]
