@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@ResponseBody
+	@CrossOrigin(origins = "*")
 	@Override
 	public Object incluir(@RequestBody Tarefa t) {
 
@@ -57,6 +59,7 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 
 	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
 	@ResponseBody
+	@CrossOrigin(origins = "*")
 	@Override
 	public Object editar(@RequestBody Tarefa t) {
 
@@ -79,6 +82,7 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 		return t;
 	}
 
+	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
 	@Override
@@ -99,6 +103,7 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 		}
 	}
 
+	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	@Override
@@ -120,6 +125,7 @@ public class TarefaController implements Serializable, CRUDController<Tarefa, Ta
 		}
 	}
 
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	@Override

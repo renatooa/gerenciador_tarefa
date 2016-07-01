@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class EtiquetaController implements Serializable, CRUDController<Etiqueta
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	@ResponseBody
+	@CrossOrigin(origins = "*")
 	@Override
 	public Object incluir(@RequestBody Etiqueta t) {
 
@@ -39,6 +41,7 @@ public class EtiquetaController implements Serializable, CRUDController<Etiqueta
 
 	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
 	@ResponseBody
+	@CrossOrigin(origins = "*")
 	@Override
 	public Object editar(@RequestBody Etiqueta t) {
 
@@ -61,6 +64,7 @@ public class EtiquetaController implements Serializable, CRUDController<Etiqueta
 
 	@RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
 	@ResponseBody
+	@CrossOrigin(origins = "*")
 	@Override
 	public Object excluir(@PathVariable(value = "id") int id) {
 
@@ -81,6 +85,7 @@ public class EtiquetaController implements Serializable, CRUDController<Etiqueta
 
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
+	@CrossOrigin(origins = "*")
 	@Override
 	public Object get(@PathVariable(value = "id") int id) {
 
@@ -102,6 +107,7 @@ public class EtiquetaController implements Serializable, CRUDController<Etiqueta
 
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
+	@CrossOrigin(origins = "*")
 	@Override
 	public EtiquetaBag getAll() {
 		return new EtiquetaBag(Etiqueta.getEtiquetas(), 100, 0);
